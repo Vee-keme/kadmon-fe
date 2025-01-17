@@ -1,5 +1,6 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const MobMenu = ({ Menus }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,6 +8,18 @@ const MobMenu = ({ Menus }) => {
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
+    setClicked(null);
+  };
+
+  const subMenuDrawer = {
+    enter: {
+      height: "auto",
+      overflow: "hidden",
+    },
+    exit: {
+      height: 0,
+      overflow: "hidden",
+    },
   };
 
   return (
@@ -15,7 +28,11 @@ const MobMenu = ({ Menus }) => {
         {isOpen ? <X /> : <Menu />}
       </button>
 
-      <div className="fixed left-0 right-0 top-16 overflow-y-auto h-full bg-[#bcbcc3] backdrop-blur p-6 ">
+      <motion.div
+        className="fixed left-0 right-0 top-16 overflow-y-auto h-full bg-[#bcbcc3] backdrop-blur p-6 "
+        initial={{ x: "-100%" }}
+        animate={{ x: isOpen ? "0%" : "-100%" }}
+      >
         <ul>
           {Menus.map(({ name, subMenu }, i) => {
             const hasSubMenu = subMenu?.length > 0;
@@ -34,23 +51,28 @@ const MobMenu = ({ Menus }) => {
                   )}
                 </span>
                 {subMenu && (
-                  <ul>
+                  <motion.ul
+                    initial="exit"
+                    animate={isClicked ? "enter" : "exit"}
+                    variants={subMenuDrawer}
+                    className="ml-5"
+                  >
                     {subMenu.map(({ name, icon: Icon }) => (
                       <li
                         key={name}
-                        className="p-2 flex-center hover:bg-white/5 rounded-md cursor-pointer"
+                        className="p-2 flex-center hover:bg-white/5 rounded-md cursor-pointer gap-x-2"
                       >
-                        <Icon />
+                        <Icon size={17} />
                         <span>{name}</span>
                       </li>
                     ))}
-                  </ul>
+                  </motion.ul>
                 )}
               </li>
             );
           })}
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 };
