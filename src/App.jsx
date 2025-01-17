@@ -6,10 +6,9 @@ import Navbar from "./components/navbar/Navbar";
 import logo from "./assets/kadmon.png";
 import { Menus } from "./utils";
 import DesktopMenu from "./components/navbar/DesktopMenu";
+import MobMenu from "./components/MobMenu";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div>
@@ -21,11 +20,20 @@ function App() {
 
             {/* menus */}
 
-            <ul className="flex-center gap-x-1">
+            <ul className="lg:flex-center hidden gap-x-1">
               {Menus.map((menu) => (
                 <DesktopMenu menu={menu} key={menu.name} />
               ))}
             </ul>
+
+            <div className="flex-center gap-x-5">
+              <button className="bg-white/5 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
+                Sign In
+              </button>
+              <div className="lg:hidden">
+                <MobMenu Menus={Menus} />
+              </div>
+            </div>
           </nav>
         </header>
       </div>
