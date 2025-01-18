@@ -29,7 +29,7 @@ const MobMenu = ({ Menus }) => {
       </button>
 
       <motion.div
-        className="fixed left-0 right-0 top-16 overflow-y-auto h-full bg-[#bcbcc3] backdrop-blur p-6 "
+        className="fixed left-0 right-0 top-16 overflow-y-auto h-full bg-[#2A3C67] bg-opacity-80 backdrop-blur p-6 "
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? "0%" : "-100%" }}
       >

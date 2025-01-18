@@ -12,10 +12,11 @@ function App() {
   return (
     <>
       <div>
-        <header className="h-16 text-[15px] fixed inset-0 flex-center bg-[#cbcbda]">
+        <header className="h-16 text-[15px] fixed inset-0 flex-center bg-[#11318C]">
           <nav className="px-3.5 flex-center-between w-full max-w-7xl mx-auto">
             <div>
-              <img src={logo} alt="logo" className="size-8" />
+              {/* <img src={logo} alt="logo" className="size-8" /> */}
+              <p>LOGO</p>
             </div>
 
             {/* menus */}
@@ -26,11 +27,11 @@ function App() {
               ))}
             </ul>
 
-            <div className="flex-center gap-x-5">
+            <div className="flex-center  gap-x-5">
               <button className="bg-white/5 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
                 Sign In
               </button>
-              <div className="lg:hidden">
+              <div className="lg:hidden ">
                 <MobMenu Menus={Menus} />
               </div>
             </div>
