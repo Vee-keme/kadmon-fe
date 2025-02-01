@@ -64,7 +64,7 @@ const DesktopMenu = ({ menu }) => {
             {menu?.subMenu?.map((subMenu, i) => (
               <div key={i} className="relative cursor-pointer">
                 <div className="flex-center gap-x-4 group/menubox">
-                  <div className="bg-white/5 w-fit p-2 rounded-md group-hover/menubox:bg-[#083DAF] group-hover:text-gray-900 duration-300">
+                  <div className="bg-white/5 w-fit p-2 rounded-md group-hover/menubox:bg-[#a7beef] group-hover:text-gray-900 duration-300">
                     {subMenu?.icon && <subMenu.icon />}
                   </div>
                   <div>

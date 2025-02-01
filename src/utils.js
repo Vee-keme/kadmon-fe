@@ -42,55 +42,45 @@ import { PanelTop } from "lucide-react";
 
 export const Menus = [
   {
-    name: "Features",
-    subMenuHeading: ["Design", "Scale"],
+    name: "Portfolio",
+    subMenuHeading: ["Design", "Prints"],
     subMenu: [
       {
         name: "Design",
-        desc: "Responsive design",
+        desc: "Our Designs",
         icon: PanelsTopLeft,
       },
       {
-        name: "Management",
-        desc: "Site control",
+        name: "Prints",
+        desc: "Quality Prints",
         icon: Bolt,
-      },
-      {
-        name: "Navigation",
-        desc: "Link pages",
-        icon: PanelTop,
-      },
-      {
-        name: "CMS",
-        desc: "Management content",
-        icon: Database,
       },
     ],
     gridCols: 2,
   },
   {
-    name: "Resources",
-    subMenuHeading: ["Get started", "Programs", "Recent"],
+    name: "Services",
+    subMenuHeading: ["Printing Services", "Graphics", "Custom order"],
     subMenu: [
       {
-        name: "Markplace",
-        desc: "Browse templates",
+        name: "Printing Services",
+        desc: "Choose Service",
         icon: ShoppingBag,
       },
       {
-        name: "Meetups",
-        desc: "Upcoming events",
+        name: "Graphics",
+        desc: "Make graphic",
         icon: MapPin,
+      },
+      {
+        name: "Custom order",
+        desc: "Customizations",
+        icon: Play,
       },
       {
         name: "Updates",
         desc: "Changelog",
         icon: BellDot,
-      },
-      {
-        name: "Academy",
-        desc: "Watch lessions",
-        icon: Play,
       },
       {
         name: "Blog",
