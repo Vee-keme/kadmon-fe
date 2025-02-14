@@ -11,6 +11,8 @@ import Footer from "./components/navbar/footer/Footer";
 import { Route, createBrowserRouter, RouterProvider } from "react-router-dom";
 import mainRoutes from "./routes/MainRoutes";
 import MainLayout from "./layout/MainLayout";
+import AuthLayout from "./layout/AuthLayout";
+import authRoutes from "./routes/AuthRoutes";
 
 function App() {
   const routes = createBrowserRouter([
@@ -19,7 +21,13 @@ function App() {
       element: <MainLayout />,
       children: mainRoutes,
     },
+    {
+      path: "/auth",
+      element: <AuthLayout />,
+      children: authRoutes,
+    },
   ]);
+
   return <RouterProvider router={routes} />;
   return (
     <div className="bg-green-500 border border-red-400">
