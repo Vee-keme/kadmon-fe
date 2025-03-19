@@ -8,12 +8,14 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
+import ProductCategories from "./ProductCategories";
 
 const HomePage = () => {
   return (
     <main className=" ">
       <HeroSection />
-      <CarouselProvider
+      <ProductCategories />
+      {/* <CarouselProvider
         naturalSlideWidth={10}
         naturalSlideHeight={12}
         totalSlides={3}
@@ -25,7 +27,7 @@ const HomePage = () => {
           <Slide index={2}>I am the third Slide.</Slide>
         </Slider>
         <ButtonNext>Next</ButtonNext>
-      </CarouselProvider>
+      </CarouselProvider> */}
     </main>
   );
 };

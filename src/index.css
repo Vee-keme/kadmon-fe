@@ -26,3 +26,67 @@ body {
     @apply flex items-center justify-between;
   }
 }
+
+@layer base {
+  :root {
+    --background: 255, 255, 255; /* White */
+    --foreground: 5, 5, 5; /* Almost black */
+
+    --card: 255, 255, 255;
+    --card-foreground: 5, 5, 5;
+
+    --popover: 255, 255, 255;
+    --popover-foreground: 5, 5, 5;
+
+    --primary: 59, 113, 202; /* Converted from 221.2, 83.2%, 53.3% */
+    --primary-foreground: 245, 247, 250; /* Converted from 210, 40%, 98% */
+
+    --secondary: 230, 235, 243; /* Converted from 210, 40%, 96.1% */
+    --secondary-foreground: 33, 38, 50; /* Converted from 222.2, 47.4%, 11.2% */
+
+    --muted: 230, 235, 243;
+    --muted-foreground: 115, 120, 130; /* Converted from 215.4, 16.3%, 46.9% */
+
+    --accent: 230, 235, 243;
+    --accent-foreground: 33, 38, 50;
+
+    --destructive: 217, 45, 58; /* Converted from 0, 84.2%, 60.2% */
+    --destructive-foreground: 245, 247, 250;
+
+    --border: 200, 205, 220; /* Converted from 214.3, 31.8%, 91.4% */
+    --input: 200, 205, 220;
+    --ring: 59, 113, 202;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 5, 5, 5;
+    --foreground: 245, 247, 250;
+
+    --card: 5, 5, 5;
+    --card-foreground: 245, 247, 250;
+
+    --popover: 5, 5, 5;
+    --popover-foreground: 245, 247, 250;
+
+    --primary: 59, 113, 202;
+    --primary-foreground: 245, 247, 250;
+
+    --secondary: 33, 38, 50;
+    --secondary-foreground: 245, 247, 250;
+
+    --muted: 5, 5, 5;
+    --muted-foreground: 115, 120, 130;
+
+    --accent: 33, 38, 50;
+    --accent-foreground: 245, 247, 250;
+
+    --destructive: 217, 45, 58;
+    --destructive-foreground: 245, 247, 250;
+
+    --border: 43, 50, 60; /* Converted from 217.2, 32.6%, 17.5% */
+    --input: 43, 50, 60;
+    --ring: 182, 187, 214; /* Converted from 212.7, 26.8%, 83.9% */
+  }
+}

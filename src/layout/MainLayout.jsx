@@ -17,7 +17,9 @@ const MainLayout = () => {
         </div>
       </main>
 
-      <Footer />
+      <div className="bg-blue-800">
+        <Footer />
+      </div>
     </div>
   );
 };
