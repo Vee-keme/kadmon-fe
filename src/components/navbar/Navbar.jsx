@@ -3,6 +3,7 @@ import React from "react";
 import MobMenu from "./MobMenu";
 import DesktopMenu from "./DesktopMenu";
 import { Menus } from "../../utils";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const navitems = [
@@ -55,9 +56,11 @@ const Navbar = () => {
       </ul>
 
       <div className="flex-center  gap-x-5">
-        <button className="bg-white/5 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
-          Sign In
-        </button>
+        <Link to="/auth/login">
+          <button className="bg-white/5 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
+            Sign In
+          </button>
+        </Link>
         <div className="lg:hidden ">
           <MobMenu Menus={Menus} />
         </div>

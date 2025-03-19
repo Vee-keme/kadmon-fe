@@ -6,11 +6,11 @@ const AuthLayout = () => {
   return (
     <main className="max-w-screen-2xl w-full h-screen overflow-hidden">
       <div className="w-full h-screen flex">
-        <div className="w-[50%]">
+        <div className="w-full md:w-[50%]">
           <Outlet />
         </div>
 
-        <div className="w-[50%]">
+        <div className="hidden md:block w-[50%]">
           <img src={heroimg} alt="" className="object-cover" />
         </div>
       </div>

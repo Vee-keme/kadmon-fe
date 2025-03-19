@@ -6,7 +6,8 @@ import Footer from "../components/navbar/footer/Footer";
 const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="h-16 text-[15px] fixed inset-0 flex-center bg-[#11318C]">
+      <header className="h-16 text-[15px] fixed inset-0 flex-center bg-blue-800 z-10">
+        {/* bg-[#11318C] */}
         <Navbar />
       </header>
 

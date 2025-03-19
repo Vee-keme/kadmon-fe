@@ -17,7 +17,7 @@ import authRoutes from "./routes/AuthRoutes";
 function App() {
   const routes = createBrowserRouter([
     {
-      path: "",
+      path: "/",
       element: <MainLayout />,
       children: mainRoutes,
     },
