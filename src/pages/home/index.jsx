@@ -9,12 +9,18 @@ import {
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import ProductCategories from "./ProductCategories";
+import ProductShowcase from "./BestSelling";
+import CTASection from "./CTASection";
 
 const HomePage = () => {
   return (
     <main className=" ">
       <HeroSection />
       <ProductCategories />
+
+      <ProductShowcase />
+      <CTASection />
+
       {/* <CarouselProvider
         naturalSlideWidth={10}
         naturalSlideHeight={12}

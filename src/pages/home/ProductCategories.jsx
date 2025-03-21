@@ -10,31 +10,31 @@ const categories = [
   },
   {
     title: "Marketing Materials",
-    image: "/placeholder.svg?height=300&width=400",
+    image: ProductIMG,
     link: "/products/marketing",
     description: "Brochures, flyers & more",
   },
   {
     title: "Signage & Banners",
-    image: "/placeholder.svg?height=300&width=400",
+    image: ProductIMG,
     link: "/products/signage",
     description: "Get noticed everywhere",
   },
   {
     title: "Promotional Products",
-    image: "/placeholder.svg?height=300&width=400",
+    image: ProductIMG,
     link: "/products/promotional",
     description: "Branded merchandise",
   },
   {
     title: "Packaging",
-    image: "/placeholder.svg?height=300&width=400",
+    image: ProductIMG,
     link: "/products/packaging",
     description: "Custom boxes & packaging",
   },
   {
     title: "Apparel & Clothing",
-    image: "/placeholder.svg?height=300&width=400",
+    image: ProductIMG,
     link: "/products/apparel",
     description: "Custom t-shirts & more",
   },
@@ -42,7 +42,7 @@ const categories = [
 
 const ProductCategories = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white w-full mx-auto">
       <div className="container">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold tracking-tight">
@@ -53,20 +53,20 @@ const ProductCategories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[90%] px-4 mx-auto">
           {categories.map((category, index) => (
             <Link
               key={index}
               href={category.link}
               className="group block overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div className="relative h-48 overflow-hidden">
-                <image
+              <div className="relative h-80 overflow-hidden">
+                <img
                   src={category.image || "/placeholder.svg"}
                   alt={category.title}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-4 text-white">
                   <h3 className="text-xl font-bold">{category.title}</h3>
                   <p className="text-sm text-white/80">

@@ -11,8 +11,8 @@ const MainLayout = () => {
         <Navbar />
       </header>
 
-      <main className="flex-grow pt-20 max-w-[90%] mx-auto text-black">
-        <div className="max-w-screen-2xl mx-auto px-4">
+      <main className="flex-grow pt-20 mx-auto text-black w-full">
+        <div className="max-w-screen-2xl mx-auto ">
           <Outlet />
         </div>
       </main>
