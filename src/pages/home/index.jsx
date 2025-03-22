@@ -11,6 +11,7 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import ProductCategories from "./ProductCategories";
 import ProductShowcase from "./BestSelling";
 import CTASection from "./CTASection";
+import ProductMockups from "./ProductMockups";
 
 const HomePage = () => {
   return (
@@ -19,6 +20,8 @@ const HomePage = () => {
       <ProductCategories />
 
       <ProductShowcase />
+
+      <ProductMockups />
       <CTASection />
 
       {/* <CarouselProvider

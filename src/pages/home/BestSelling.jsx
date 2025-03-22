@@ -1,12 +1,19 @@
 import { useRef } from "react";
-
-// import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
+import Chip from "@mui/material/Chip";
+import IMG from "../../assets/HeroImg.png";
 
 const products = [
   {
     title: "Premium Business Cards",
-    image: "/placeholder.svg?height=300&width=400",
+    image: IMG,
     price: "From $19.99",
     rating: 4.8,
     reviews: 1243,
@@ -15,15 +22,15 @@ const products = [
   },
   {
     title: "Glossy Brochures",
-    image: "/placeholder.svg?height=300&width=400",
-    price: "From $49.99",
+    price: "From $19.99",
+    image: IMG,
     rating: 4.7,
     reviews: 856,
     link: "/products/glossy-brochures",
   },
   {
     title: "Custom Banners",
-    image: "/placeholder.svg?height=300&width=400",
+    image: IMG,
     price: "From $79.99",
     rating: 4.9,
     reviews: 632,
@@ -32,7 +39,7 @@ const products = [
   },
   {
     title: "Promotional Flyers",
-    image: "/placeholder.svg?height=300&width=400",
+    image: IMG,
     price: "From $29.99",
     rating: 4.6,
     reviews: 421,
@@ -40,7 +47,7 @@ const products = [
   },
   {
     title: "Custom Stickers",
-    image: "/placeholder.svg?height=300&width=400",
+    image: IMG,
     price: "From $9.99",
     rating: 4.8,
     reviews: 1876,
@@ -49,7 +56,7 @@ const products = [
   },
   {
     title: "Branded Merchandise",
-    image: "/placeholder.svg?height=300&width=400",
+    image: IMG,
     price: "From $14.99",
     rating: 4.7,
     reviews: 543,
@@ -58,19 +65,19 @@ const products = [
 ];
 
 const ProductShowcase = () => {
-  //     const scrollContainerRef = useRef < HTMLDivElement > null;
+  const scrollContainerRef = useRef(null);
 
-  //   const scrollLeft = () => {
-  //     if (scrollContainerRef.current) {
-  //       scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
-  //     }
-  //   };
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    }
+  };
 
-  //   const scrollRight = () => {
-  //     if (scrollContainerRef.current) {
-  //       scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-  //     }
-  //   };
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    }
+  };
 
   return (
     <section className="py-16 bg-gray-50 px-4">
@@ -86,19 +93,15 @@ const ProductShowcase = () => {
           </div>
           <div className="flex gap-2">
             <button
-              variant="outline"
-              size="icon"
-              //   onClick={scrollLeft}
-              className="rounded-full border-blue-600 text-blue-600 hover:bg-blue-50"
+              onClick={scrollLeft}
+              className="rounded-full border-blue-600 text-blue-600 hover:bg-blue-50 p-2"
             >
               <ChevronLeft className="h-5 w-5" />
               <span className="sr-only">Scroll left</span>
             </button>
             <button
-              variant="outline"
-              size="icon"
-              //   onClick={scrollRight}
-              className="rounded-full border-blue-600 text-blue-600 hover:bg-blue-50"
+              onClick={scrollRight}
+              className="rounded-full border-blue-600 text-blue-600 hover:bg-blue-50 p-2"
             >
               <ChevronRight className="h-5 w-5" />
               <span className="sr-only">Scroll right</span>
@@ -107,59 +110,94 @@ const ProductShowcase = () => {
         </div>
 
         <div
-          //   ref={scrollContainerRef}
+          ref={scrollContainerRef}
           className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {products.map((product, index) => (
-            <div
+            <Card
               key={index}
-              className="min-w-[280px] max-w-[280px] snap-start border-none shadow-md hover:shadow-lg transition-shadow duration-300"
+              sx={{
+                minWidth: 280,
+                maxWidth: 280,
+                boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+                border: "none",
+                transition: "box-shadow 0.3s",
+                scrollSnapAlign: "start",
+                "&:hover": {
+                  boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
+                },
+              }}
             >
-              <div className="relative">
+              <Box sx={{ position: "relative" }}>
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.title}
-                  width={280}
-                  height={200}
-                  className="w-full h-[180px] object-cover rounded-t-lg"
+                  style={{
+                    width: "100%",
+                    height: "180px",
+                    objectFit: "cover",
+                    borderTopLeftRadius: "4px",
+                    borderTopRightRadius: "4px",
+                  }}
                 />
                 {product.badge && (
-                  <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">
-                    {product.badge}
-                  </div>
+                  <Chip
+                    label={product.badge}
+                    color="primary"
+                    size="small"
+                    sx={{
+                      position: "absolute",
+                      top: 8,
+                      right: 8,
+                      bgcolor: "#1e40af",
+                      fontWeight: "bold",
+                    }}
+                  />
                 )}
-              </div>
-              <div className="pt-4">
-                <h3 className="font-semibold text-lg mb-1">{product.title}</h3>
-                <p className="text-blue-600 font-medium">{product.price}</p>
-                <div className="flex items-center mt-2">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`h-4 w-4 ${
-                          i < Math.floor(product.rating)
-                            ? "text-yellow-400 fill-yellow-400"
-                            : "text-gray-300"
-                        }`}
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm text-muted-foreground ml-2">
+              </Box>
+              <CardContent>
+                <Typography variant="h6" component="h3" gutterBottom>
+                  {product.title}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  sx={{ color: "#1e40af", fontWeight: "bold" }}
+                >
+                  {product.price}
+                </Typography>
+                <Box sx={{ display: "flex", alignItems: "center", mt: 1 }}>
+                  <Rating
+                    value={product.rating}
+                    precision={0.1}
+                    readOnly
+                    size="small"
+                  />
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ ml: 1 }}
+                  >
                     {product.rating} ({product.reviews})
-                  </span>
-                </div>
-              </div>
-              <div>
-                <a
+                  </Typography>
+                </Box>
+              </CardContent>
+              <CardActions>
+                <Button
+                  variant="contained"
+                  fullWidth
                   href={product.link}
-                  className="w-full inline-flex h-9 items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  sx={{
+                    bgcolor: "#1e40af",
+                    "&:hover": {
+                      bgcolor: "#1e3a8a",
+                    },
+                  }}
                 >
                   Shop Now
-                </a>
-              </div>
-            </div>
+                </Button>
+              </CardActions>
+            </Card>
           ))}
         </div>
       </div>
