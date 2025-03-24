@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 import {
@@ -20,12 +21,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { axiosInstance } from "../../config/axiosInstance";
 
+import { AuthContext } from "../../contexts/AuthProvider";
+
 const schema = z.object({
   email: z.string().min(4, { message: "Required" }),
   password: z.string().min(10, { message: "Required" }),
 });
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -41,9 +47,21 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
       });
 
-      console.log("User:", response.data);
+      if (response.data?.token) {
+        login(response.data.token);
+        localStorage.setItem("token", response.data.token);
+        navigate("/");
+
+        console.log("Token stored:", response.data.token);
+        console.log("User logged in successfully!");
+        // window.location.href = "/dashboard"; // Redirect user after login
+      } else {
+        console.error("Login failed: No token received");
+      }
+
+      // console.log("User:", response.data);
     } catch (err) {
-      console.log(`${err.response?.data?.message} message` || "login failed");
+      console.log(err.response?.data?.message || "Login failed");
     }
   };
 

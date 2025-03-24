@@ -12,6 +12,8 @@ import ProductCategories from "./ProductCategories";
 import ProductShowcase from "./BestSelling";
 import CTASection from "./CTASection";
 import ProductMockups from "./ProductMockups";
+import OurFeatures from "./OurFeatures";
+import BrandingJobs from "./BrandingJobs";
 
 const HomePage = () => {
   return (
@@ -20,8 +22,9 @@ const HomePage = () => {
       <ProductCategories />
 
       <ProductShowcase />
-
       <ProductMockups />
+      <OurFeatures />
+      <BrandingJobs />
       <CTASection />
 
       {/* <CarouselProvider

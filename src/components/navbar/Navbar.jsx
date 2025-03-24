@@ -5,7 +5,12 @@ import DesktopMenu from "./DesktopMenu";
 import { Menus } from "../../utils";
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
+
 const Navbar = () => {
+  const { token, logout } = useContext(AuthContext);
+
   const navitems = [
     {
       item: "Services",
@@ -56,11 +61,20 @@ const Navbar = () => {
       </ul>
 
       <div className="flex-center  gap-x-5">
-        <Link to="/auth/login">
-          <button className="bg-white/5 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
-            Sign In
+        {token ? (
+          <button
+            className="bg-white/5 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center"
+            onClick={logout}
+          >
+            Log Out
           </button>
-        </Link>
+        ) : (
+          <Link to="/auth/login">
+            <button className="bg-white/5 z-[999] relative px-3 py-1.5 shadow rounded-xl flex-center">
+              Sign In
+            </button>
+          </Link>
+        )}
         <div className="lg:hidden ">
           <MobMenu Menus={Menus} />
         </div>

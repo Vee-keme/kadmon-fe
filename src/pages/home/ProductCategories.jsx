@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom";
 import ProductIMG from "../../assets/HeroImg.png";
+import banner from "../../assets/banner.jpg";
+import businessCard from "../../assets/businessCard.jpg";
+import marketingMaterials from "../../assets/marketing materials.jpg";
 
 const categories = [
   {
     title: "Business Cards",
-    image: ProductIMG,
+    image: businessCard,
     link: "/products/business-cards",
     description: "Make a lasting impression",
   },
   {
     title: "Marketing Materials",
-    image: ProductIMG,
+    image: marketingMaterials,
     link: "/products/marketing",
     description: "Brochures, flyers & more",
   },
   {
     title: "Signage & Banners",
-    image: ProductIMG,
+    image: banner,
     link: "/products/signage",
     description: "Get noticed everywhere",
   },
