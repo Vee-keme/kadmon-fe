@@ -1,4 +1,4 @@
-import { Login, Signup } from "../pages";
+import { AdminSignup, Login, Signup } from "../pages";
 
 const authRoutes = [
   {
@@ -8,6 +8,10 @@ const authRoutes = [
   {
     path: "login",
     element: <Login />,
+  },
+  {
+    path: "admin/signup",
+    element: <AdminSignup />,
   },
 ];
 

@@ -25,7 +25,7 @@ const MobMenu = ({ Menus }) => {
   return (
     <div>
       <button onClick={toggleDrawer} className="z-[999] relative">
-        {isOpen ? <X /> : <Menu />}
+        {isOpen ? <X /> : <Menu className="" />}
       </button>
 
       <motion.div

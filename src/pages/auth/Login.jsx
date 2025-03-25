@@ -10,6 +10,8 @@ import {
   OutlinedInput,
   TextField,
   Button,
+  Alert,
+  CircularProgress,
 } from "@mui/material";
 
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -24,44 +26,70 @@ import { axiosInstance } from "../../config/axiosInstance";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const schema = z.object({
-  email: z.string().min(4, { message: "Required" }),
-  password: z.string().min(10, { message: "Required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string().min(1, { message: "Password is required" }),
 });
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const [message, setMessage] = useState({ text: "", severity: "" });
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
   });
 
   const submitForm = async (data) => {
+    setLoading(true);
+
     try {
-      console.log("logging in:", data);
       const response = await axiosInstance.post("auth/login", data, {
         headers: { "Content-Type": "application/json" },
       });
 
       if (response.data?.token) {
-        login(response.data.token);
-        localStorage.setItem("token", response.data.token);
-        navigate("/");
+        login({
+          token: response.data.token,
+          email: response.data.email,
+          role: response.data.role,
+        });
 
-        console.log("Token stored:", response.data.token);
-        console.log("User logged in successfully!");
-        // window.location.href = "/dashboard"; // Redirect user after login
+        setMessage({
+          text: "Login successful! Redirecting...",
+          severity: "success",
+        });
+
+        setTimeout(() => {
+          switch (response.data.role) {
+            case "admin":
+              navigate("/admin/dashboard");
+              break;
+            case "manager":
+              navigate("/manager/dashboard");
+              break;
+            default:
+              navigate("/");
+          }
+        }, 1000);
+
+        console.log("token", response.data);
+        // console.log("User logged in successfully!");
       } else {
-        console.error("Login failed: No token received");
+        throw new Error("No token received");
       }
 
       // console.log("User:", response.data);
     } catch (err) {
       console.log(err.response?.data?.message || "Login failed");
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -71,34 +99,46 @@ const Login = () => {
 
       <div className="w-[90%] md:w-[60%] mx-auto space-y-10 ">
         <div className="space-y-2">
-          <p>Start your Journey</p>
+          <p>Welcome back</p>
           <h2 className="font-bold text-3xl">Log in to LOGO</h2>
         </div>
+
+        {message.text && (
+          <Alert severity={message.severity} className="mb-4">
+            {message.text}
+          </Alert>
+        )}
+
         <form
           action=""
           onSubmit={handleSubmit(submitForm)}
           className="  flex flex-col gap-6 self-center "
         >
           <TextField
-            id="outlined-required"
-            label="email"
-            placeholder=" example@mail.com"
-            autoComplete="email"
-            // defaultValue="Hello World"
+            label="Email"
+            placeholder="example@mail.com"
+            type="email"
             {...register("email")}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            fullWidth
+            autoFocus
           />
-          {errors.email?.message && <p>{errors.email?.message}</p>}
+
           <TextField
-            id="outlined-password-input"
             label="Password"
             type="password"
-            autoComplete="current-password"
             {...register("password")}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            fullWidth
           />
-          {errors.password?.message && <p>{errors.password?.message}</p>}
 
           <Button
             variant="contained"
+            type="submit"
+            disabled={loading}
+            fullWidth
             sx={{
               backgroundColor: "#083DAF", // Tailwind `bg-blue-500`
               color: "white",
@@ -108,9 +148,11 @@ const Login = () => {
                 backgroundColor: "rgb(37, 99, 235)", // Tailwind `hover:bg-blue-600`
               },
             }}
-            type="submit"
+            endIcon={
+              loading ? <CircularProgress size={24} color="inherit" /> : null
+            }
           >
-            Log In
+            {loading ? "Logging in..." : "Log In"}
           </Button>
         </form>
 

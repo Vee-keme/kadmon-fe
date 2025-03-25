@@ -33,7 +33,7 @@ const schema = z.object({
   role: z.enum(["user", "manager", "admin"]).default("user"),
 });
 
-const Signup = () => {
+const AdminSignup = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState({ text: "", severity: "" });
   const [loading, setLoading] = useState(false);
@@ -75,7 +75,7 @@ const Signup = () => {
     }
   };
 
-  const showRoleSelector = false; //ONLY SHOW THIS FOR ADMIN OR MANAGER SIGNUP
+  const showRoleSelector = true; //ONLY SHOW THIS FOR ADMIN OR MANAGER SIGNUP
 
   return (
     <div className="w-full h-full px-6 py-10 text-black flex flex-col justify-between">
@@ -98,15 +98,6 @@ const Signup = () => {
           className="  flex flex-col gap-6 self-center "
           onSubmit={handleSubmit(submitForm)}
         >
-          {/* <TextField
-            id="outlined-required"
-            label="Email"
-            placeholder=" example@mail.com"
-            // defaultValue="Hello World"
-            {...register("email")}
-          />
-          {errors.email?.message && <p>{errors.email?.message}</p>} */}
-
           <TextField
             label="Email"
             placeholder="example@mail.com"
@@ -141,22 +132,6 @@ const Signup = () => {
               </Select>
             </FormControl>
           )}
-
-          {/* <Button
-            variant="contained"
-            sx={{
-              backgroundColor: "#083DAF", // Tailwind `bg-blue-500`
-              color: "white",
-              padding: "16px 16px",
-              borderRadius: "6px",
-              "&:hover": {
-                backgroundColor: "rgb(37, 99, 235)", // Tailwind `hover:bg-blue-600`
-              },
-            }}
-            type="submit"
-          >
-            Sign Upp
-          </Button> */}
 
           <Box mt={2}>
             <Button
@@ -204,4 +179,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default AdminSignup;

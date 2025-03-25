@@ -29,15 +29,6 @@ function App() {
   ]);
 
   return <RouterProvider router={routes} />;
-  return (
-    <div className="bg-green-500 border border-red-400">
-      <header className="h-16 text-[15px] fixed inset-0 flex-center bg-[#11318C]">
-        <Navbar />
-      </header>
-
-      <Footer />
-    </div>
-  );
 }
 
 export default App;
